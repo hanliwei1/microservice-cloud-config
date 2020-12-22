@@ -21,14 +21,14 @@ eureka:
       defaultZone: http://192.168.3.240:6001/eureka
   instance:
     instanceId: ${spring.application.name}:${server.port} # 指定实例ID,就不会显示主机名了
-    preferIpAddress: false     #访问路径可以显示IP地址
+    preferIpAddress: true     #访问路径可以显示IP地址
 
 zuul:
   routes:
     provider-product:    # 路由名称，名称任意，路由名称唯一
       path: /product/** # 访问路径
       serviceId: microservice-product-config # 指定服务ID，会自动从Eureka中找到此服务的ip和端口
-      stripPrefix: true # 代理转发时去掉前缀，false:代理转发时不去掉前缀 例如:为true时请求 /product/get/1，代理转发到/get/1
+      stripPrefix: false # 代理转发时去掉前缀，false:代理转发时不去掉前缀 例如:为true时请求 /product/get/1，代理转发到/get/1
       
 ---
 server:
